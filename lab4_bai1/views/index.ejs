@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Tran Tuan Kiet - Bai 01</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Tran Tuan Kiet - Lab 04</h1>
+
+        <form action="/add" method="post">
+            <input type="text" id="name" name="name" placeholder="Nhap ten mon hoc" required>
+            <br>
+            <input type="number" id="soTiet" name="soTiet"placeholder="Nhap so tiet" required>
+            <br>
+            <input type="number" id="soTinChi" name="soTinChi" placeholder="Nhap so tin chi" required>
+            <br>
+            <button type="submit">Them mon hoc</button>
+        </form>
+        <form action="/search" method="get">
+            <input type="text" id="search" name="search" placeholder="Nhap ten mon hoc..." value="<%= searchTerm || '' %>">
+            <button type="submit">Search</button>
+        </form>
+        <table>
+            <caption>Danh sach cac mon hoc</caption>
+
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ten mon hoc</th>
+                    <th>So tiet</th>
+                    <th>So tin chi</th>
+                    <th>Thao tac</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% courses.forEach(item => { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.soTiet %></td>
+                        <td><%= item.soTinChi %></td>
+                        <td>
+                            <a href="/delete/<%= item.id %>">Xoa</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
